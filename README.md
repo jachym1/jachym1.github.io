@@ -6,7 +6,7 @@ Install Python and Nuitka package from http://nuitka.net/pages/download.html Edi
 
 Add line
 
-#include <stdint.h>
+    #include <stdint.h>
 
 Install latest py-HDB client version from git epository git clone https://github.com/SAP/pyhdb.git
 
@@ -16,23 +16,18 @@ Comment lines:
 
 Begin of code
 
-class NoneType(Type):
+    class NoneType(Type):
 
-python_type = None.__class__
+    python_type = None.__class__
 
-@classmethod
-def to_sql(cls, _):
+    @classmethod
+    def to_sql(cls, _):
 
     return text_type("NULL")
 
+    @classmethod
 
-@classmethod
-
-def prepare(cls, type_code):
-
-    """Prepare a binary NULL value for given type code"""
-    
-This is achieved by setting the MSB of the type_code byte to 1
+    def prepare(cls, type_code):
 
     return struct.pack('<B', type_code | 0x80)
 
