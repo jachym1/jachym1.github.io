@@ -36,24 +36,25 @@ End of code
 cd pyhdb
 Edit __main__.py according to your needs - HANA connection parameters and sql statements fro example
 
-import pyhdb
-connection = pyhdb.connect(
-host="demo",
-port=30015,
-user="SYSTEM",
-password="demo"
-)
+    import pyhdb
+    connection = pyhdb.connect(
+    host="demo",
+    port=30015,
+    user="SYSTEM",
+    password="demo"
+    )
 
-cursor = connection.cursor()
-cursor.execute("SELECT TEST FROM TEST")
-result = cursor.fetchall()
-print result
-connection.close()
+    cursor = connection.cursor()
+    cursor.execute("SELECT TEST FROM TEST")
+    result = cursor.fetchall()
+    print result
+    connection.close()
 
-Compile the program
+Compile and run the program
 
-nuitka . --recurse-all
-mv ..exe test
-./test
+    nuitka . --recurse-all
+    mv ..exe test
+    ./test
 
 Enjoy
+ 
